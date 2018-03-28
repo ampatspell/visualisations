@@ -37,11 +37,11 @@ export default component => {
       .attr('d', line);
   }
 
-  d3.interval(() => {
+  let timer = d3.interval(() => {
     update();
   }, 1500);
 
   return () => {
-
+    timer.stop();
   };
 }
