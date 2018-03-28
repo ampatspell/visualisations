@@ -19,22 +19,14 @@ export default component => {
     .radius(Math.min(width, height) / 3)
     .curve(d3.curveCardinal);
 
-  let r = d3.randomUniform(0, 1);
+  let path = root.append('path').attr('class', 'line');
+  let random = d3.randomUniform(0, 1);
 
   const update = () => {
-    let data = d3.range(250).map(() => r());
-    let path = root.selectAll('path').data([ data ]);
-
-    path.enter()
-      .append('path')
-      .attr('class', 'line');
-
-    path.exit()
-      .remove();
-
+    let data = d3.range(250).map(random);
     path.transition()
       .duration(1000)
-      .attr('d', line);
+      .attr('d', line(data));
   }
 
   let timer = d3.interval(() => {
