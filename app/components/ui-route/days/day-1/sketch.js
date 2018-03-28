@@ -7,7 +7,7 @@ export default component => {
 
   let root = svg.append('g')
     .attr('transform', () => {
-      let x = width / 2 - 50;
+      let x = width / 2;
       let y = height / 2;
       return `translate(${x}, ${y})`;
     });
@@ -16,13 +16,13 @@ export default component => {
 
   let line = d3.lineRadial()
     .angle(d => s(d))
-    .radius(200)
+    .radius(Math.min(width, height) / 3)
     .curve(d3.curveCardinal);
 
   let r = d3.randomUniform(0, 1);
 
   const update = () => {
-    let data = d3.range(200).map(() => r());
+    let data = d3.range(250).map(() => r());
     let path = root.selectAll('path').data([ data ]);
 
     path.enter()
