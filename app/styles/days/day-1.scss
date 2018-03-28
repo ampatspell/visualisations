@@ -1,0 +1,9 @@
+.ui-route-days-day-1 {
+  @include fixed-fullscreen;
+  > svg {
+    .line {
+      stroke: none;
+      fill: #000;
+    }
+  }
+}

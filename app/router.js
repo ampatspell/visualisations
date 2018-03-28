@@ -7,6 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('days', function() {
+    this.route('1');
+  });
 });
 
 export default Router;
