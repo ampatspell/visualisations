@@ -5,6 +5,8 @@ export default component => {
 
   let { width, height } = svg.node().getBoundingClientRect();
 
+  let radius = Math.min(width, height) / 3;
+
   let root = svg.append('g')
     .attr('transform', () => {
       let x = width / 2;
@@ -16,7 +18,7 @@ export default component => {
 
   let line = d3.lineRadial()
     .angle(d => s(d))
-    .radius(Math.min(width, height) / 3)
+    .radius(radius)
     .curve(d3.curveCardinal);
 
   let path = root.append('path').attr('class', 'line');
